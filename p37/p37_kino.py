@@ -79,7 +79,6 @@ def test(file_name):
 	find_next(0,q0,p0,maze_input)
 	print solve
 
-
 test("p37.in")
 test("p37_2.in")
 test("p37_3.in")
