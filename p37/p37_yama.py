@@ -4,24 +4,23 @@ import sys
 
 
 def bfs(r,c):
+	#search right,left
 	for dx in [-1,1]:
 		dy = 0
 		nx = c + dx
 		ny = r + dy
 		if (0 <= nx and nx < int(max_col) and 0<= ny and ny < int(max_raw)):
-		#if(warr[ny][nx] == "#"):
 				
 			if(warr[ny][nx] == "G"):
 				return "goal"
 			elif(warr[ny][nx] == "."):
 				buf.append([ny,nx])
-
+	#search up,down
 	for dy in [-1,1]:
 		dx = 0
 		nx = c + dx
 		ny = r + dy
 		if (0 <= nx and nx < int(max_col) and 0<= ny and ny < int(max_raw)):
-		#if(warr[ny][nx] == "#"):
 				
 			if(warr[ny][nx] == "G"):
 				return "goal"
@@ -32,7 +31,8 @@ def bfs(r,c):
 	
 
 if __name__ == '__main__':
-
+	
+	#input	
 	max_raw = raw_input()
 	max_col = raw_input()
 	warr = []
@@ -51,18 +51,31 @@ if __name__ == '__main__':
 	q = []
 	buf = []
 	goal = 1
+	#set start raw,col
 	q.append([s_raw,s_col])
+	
+	rc = []
+	r = 0
+	c = 0
+	#search loop
 	while (True):
-		r = q[0][0]
-		c = q[0][1]
-		q.pop(0)
-
+		#dequeue
+		rc = q.pop(0)
+		r = rc[0]
+		c = rc[1]
+		
+		#mark already visit
 		warr[r][c] = "#"
 
+		#bfs
 		str = bfs(r,c)
+		
+		#if arrive to goal, return answer
 		if (str == "goal"):
 			print str	
 			break
+		
+		#if queue is empty, goal + 1 and enqueue next level
 		if (len(q) == 0):
 			goal+=1
 			q = q + buf
