@@ -63,7 +63,6 @@ def find_next(count,que,p,maze_input):
 			return
 		if maze_input[p_r[0]][p_r[1]] != "#" and not find_que(que,p_r):
 			find_next(count+1,que,p_r,maze_input)
-		
 	return
 
 
