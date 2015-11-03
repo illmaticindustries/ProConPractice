@@ -26,37 +26,36 @@ if __name__ == '__main__':
 		u500 += 1
 		c500 -= 1
 		if(rest == 0):
-			print " 1 : " + str(u1) +  " 5 : " + str(u5) + " 10 : " + str(u10) +  " 50 : " + str(u50) +  " 100 : " + str(u100) + " 500 : " + str(u500) 
+			print " 1yen : %d  5yen : %d  10yen : %d  50yen : %d  100yen : %d  500yen : %d" %(u1,u5,u10,u50,u100,u500)
 	while(c100 > 0 and rest >= 100):
 		rest = rest - 100
 		u100 += 1
 		c100 -= 1
 		if(rest == 0):
-			print " 1 : " + str(u1) + " 5 : " + str(u5) + " 10 : " + str(u10) +  " 50 : " + str(u50) + " 100 : " + str(u100) + " 500 : " + str(u500) 
+			print " 1yen : %d  5yen : %d  10yen : %d  50yen : %d  100yen : %d  500yen : %d" %(u1,u5,u10,u50,u100,u500)
 	while(c50 > 0 and rest >= 50):
 		rest = rest - 50
 		u50 += 1
 		c50 -= 1
 		if(rest == 0):
-			print " 1 : " + str(u1) + " 5 : " + str(u5) + " 10 : " + str(u10) +  " 50 : " + str(u50) + " 100 : " + str(u100) + " 500 : " + str(u500) 
+			print " 1yen : %d  5yen : %d  10yen : %d  50yen : %d  100yen : %d  500yen : %d" %(u1,u5,u10,u50,u100,u500)
 	while(c10 > 0 and rest >= 10):
 		rest = rest - 10
 		u10 += 1
 		c10 -= 1
 		if(rest == 0):
-			print " 1 : " + str(u1) + " 5 : " + str(u5) + " 10 : " + str(u10) +  " 50 : " + str(u50) + " 100 : " + str(u100) + " 500 : " + str(u500) 
+			print " 1yen : %d  5yen : %d  10yen : %d  50yen : %d  100yen : %d  500yen : %d" %(u1,u5,u10,u50,u100,u500)
 	while(c5 > 0 and rest >= 5):
 		rest = rest - 5
 		u5 += 1
 		c5 -= 1
 		if(rest == 0):
-			print " 1 : " + str(u1) + " 5 : " + str(u5) + " 10 : " + str(u10) +  " 50 : " + str(u50) + " 100 : " + str(u100) + " 500 : " + str(u500) 
+			print " 1yen : %d  5yen : %d  10yen : %d  50yen : %d  100yen : %d  500yen : %d" %(u1,u5,u10,u50,u100,u500)
 	while(c1 > 0 and rest >= 1):
 		rest = rest - 1
 		u1 += 1
 		c1 -= 1
 		if(rest == 0):
-			print " 1 : " + str(u1) + " 5 : " + str(u5) + " 10 : " + str(u10) +  " 50 : " + str(u50) + " 100 : " + str(u100) + " 500 : " + str(u500) 
-	
+			print " 1yen : %d  5yen : %d  10yen : %d  50yen : %d  100yen : %d  500yen : %d" %(u1,u5,u10,u50,u100,u500)
 	
 
