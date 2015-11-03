@@ -25,8 +25,7 @@ def count(file_name)
   result = []
   coins.reverse.each do |coin|
     use_count = (price / coin[0] >= coin[1]) ? coin[1] : price / coin[0]
-    use_amount = use_count * coin[0]
-    price -= use_amount
+    price -= use_count * coin[0]
     result << "#{coin[0]}円#{use_count}枚"
   end
 
