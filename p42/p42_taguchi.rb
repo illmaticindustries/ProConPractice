@@ -8,7 +8,7 @@ def read_file(file_name)
 end
 
 def coins
-  @coins = [
+  [
     [1, @coins_array[0]],
     [5, @coins_array[1]],
     [10, @coins_array[2]],
@@ -16,22 +16,20 @@ def coins
     [100, @coins_array[4]],
     [500, @coins_array[5]]
   ]
-  @price = @coins_array[6]
 end
 
 def count(file_name)
   read_file(file_name)
-  coins
+  price = @coins_array[6]
 
-  @result = []
-  @coins.reverse.each do |coin|
-    use_count = (@price / coin[0] >= coin[1]) ? coin[1] : @price / coin[0]
-    use_amount = use_count * coin[0]
-    @price -= use_amount
-    @result << "#{coin[0]}円#{use_count}枚"
+  result = []
+  coins.reverse.each do |coin|
+    use_count = (price / coin[0] >= coin[1]) ? coin[1] : price / coin[0]
+    price -= use_count * coin[0]
+    result << "#{coin[0]}円#{use_count}枚"
   end
 
-  p "#{@coins_array[6]}円: " + @result.join(', ')
+  p "#{@coins_array[6]}円: " + result.join(', ')
 end
 
 count('p42.in')
