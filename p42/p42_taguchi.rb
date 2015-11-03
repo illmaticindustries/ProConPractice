@@ -25,14 +25,14 @@ def count(file_name)
 
   @result = []
   @coins.reverse.each do |coin|
-    coin
     use_count = @price / coin[0]
     use_count = coin[1] if use_count >= coin[1]
     use_amount = use_count * coin[0]
     @price = @price - use_amount
     @result << "#{coin[0]}円#{use_count}枚"
   end
-  @result
+
+  p "#{@coins_array[6]}円: " + @result.join(', ')
 end
 
 count('p42.in')
