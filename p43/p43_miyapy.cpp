@@ -2,6 +2,7 @@
 #include <math.h>
 
 #define BUF  100000
+#define BIG_NUM 1000000000
 
 int nearest_job(int now, int *s,int *t,int n);
 
@@ -34,14 +35,15 @@ int main(void){
         else{
             count++;        
             now = t[ter];
-            t[ter]=1000000000;
+            t[ter]=BIG_NUM;
         };
     }
-    printf("%d",count);
+
+    printf("answer:%d",count);
 }
 
 int nearest_job(int now,int *s,int *t,int n){
-    int min = 1000000000;
+    int min = BIG_NUM;
     int index = n;
     for(int i=0;i<n;i++){
         if((s[i]>now)&&(t[i]<min)){
@@ -49,8 +51,8 @@ int nearest_job(int now,int *s,int *t,int n){
             index = i;
         }
     }
-    if(min == 1000000000) index = -1;
-    printf("%d",index);
+    if(min == BIG_NUM) index = -1;
+    //printf("%d",index);
     return index;
 
 }
