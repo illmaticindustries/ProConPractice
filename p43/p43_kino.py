@@ -12,19 +12,33 @@ def read_input(file_name):
 	for n in range(N):
 		T.append(int(f.readline()))
 	f.close()
-	return N,S,T
+	S_,T_ = sort_input(N,S,T)
+	return N,S_,T_
+
+def sort_input(N,S,T):
+	S_buff = []
+	for s in S:
+		S_buff.append(s)
+	S_buff.sort()
+	T_buff = []
+	for s_buff in S_buff:
+		n = S.index(s_buff)
+		T_buff.append(T[n])
+		S.pop(n)
+		T.pop(n)
+	return S_buff,T_buff
+
 
 def choose_next(s_now,N,S,T):
 	#next t -> s
 	n_now = S.index(s_now)
 	t_now = T[n_now]
 	t_min = 10**9
+	n_min = 100000
 	for n in range(N):
 		if T[n] > t_now and T[n] < t_min and S[n] > t_now:
 			t_min = T[n]
-	if t_min == 10**9:
-		t_min = t_now
-	n_min = T.index(t_min)
+			n_min = n
 	s = S[n_min]
 	return s
 
@@ -59,7 +73,8 @@ def decide_schedule(schedules,N):
 
 def test(file_name):
 	N,S,T = read_input(file_name)
-	len_work = T[N-1] - S[0]
+	S.sort()
+	T.sort()
 	schedules = make_schedules(N,S,T)
 	decide_schedule(schedules,N)
 
