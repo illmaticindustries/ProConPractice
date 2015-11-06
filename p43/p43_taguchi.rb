@@ -7,17 +7,17 @@ def read_file(file_name)
   end
 
   @num = array.first
-  p 'start_times'
-  p start_times = array[1..@num.to_i]
-  p 'end_times'
-  p end_times = array[(@num.to_i + 1)..-1]
+  # 'start_times'
+  start_times = array[1..@num.to_i]
+  # 'end_times'
+  end_times = array[(@num.to_i + 1)..-1]
   times = []
   (0..(@num.to_i - 1)).each do |num|
     times[num] = [start_times[num], end_times[num]]
   end
 
   # end_timesでソートする
-  p times = times.sort { |a, b| a[1] <=> b[1] }
+  times = times.sort { |a, b| a[1] <=> b[1] }
 
   # 戻す
   @start_times = []
@@ -64,7 +64,7 @@ def jobs(file)
     break if end_times.empty? || start_times.select { |time| time > end_times.first }.empty?
   end
 
-  p "count: #{jobs.size}, jobs: #{jobs}"
+  p "Answer: #{jobs.size}"
 end
 
 jobs('p43.in')
