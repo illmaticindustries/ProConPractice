@@ -12,13 +12,16 @@ def read_file(file_name)
 end
 
 read_file('p43.in')
+# read_file('p43_1.in')
+# read_file('p43_2.in')
 
 jobs = []
 
-# スタートが[0]の場合
-start_times = @start_times
-end_times = @end_times
-jobs << 1
+# スタートの位置を終了が一番速い箇所に設定する
+first_end_time_index = @end_times.find_index(@end_times.min)
+start_times = @start_times[first_end_time_index..-1]
+end_times = @end_times.last(start_times.size)
+jobs << @num - start_times.size + 1
 
 loop do
   p 'start_times'
