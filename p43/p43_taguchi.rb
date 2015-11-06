@@ -7,8 +7,8 @@ def read_file(file_name)
   end
 
   @num = array[0]
-  p @start_times = array[1..5]
-  p @end_times = array[6..10]
+  @start_times = array[1..5]
+  @end_times = array[6..10]
 end
 
 read_file('p43.in')
@@ -16,16 +16,19 @@ read_file('p43.in')
 jobs = []
 
 # スタートが[0]の場合
-first_start_time = @start_times.first
-first_end_time = @end_times.first
+start_times = @start_times
+end_times = @end_times
 jobs << 1
 
-p next_start_times = @start_times.select { |time| time > first_end_time }
-p jobs << @num - next_start_times.size + 1
-p next_end_times = next_start_times.select { |time| time > next_start_times.first }
-
-p next_start_times = next_start_times.select { |time| time > next_end_times.first }
-p jobs << @num - next_start_times.size + 1
-p next_end_times = next_start_times.select { |time| time > next_start_times.first }
+loop do
+  p 'start_times'
+  p start_times = start_times.select { |time| time > end_times.first }
+  p 'jobs'
+  p jobs << @num - start_times.size + 1
+  p 'end_times'
+  p end_times = end_times.last(start_times.size)
+  p '---'
+  break if end_times.empty? || start_times.select { |time| time > end_times.first }.empty?
+end
 
 p "jobs: #{jobs}"
