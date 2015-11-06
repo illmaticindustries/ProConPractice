@@ -50,3 +50,4 @@ def test(file_name):
 	print pay
 
 test("p42.in")
+test("p42_1.in")

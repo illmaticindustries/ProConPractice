@@ -39,28 +39,28 @@ def find_next(count,que,p,maze_input):
 		if maze_input[p_u[0]][p_u[1]] == "G":
 			solve.append(count + 1)
 			print que
-			return
+			#return
 		if maze_input[p_u[0]][p_u[1]] != "#" and not find_que(que,p_u):
 			find_next(count+1,que,p_u,maze_input)
 	if p_d[0] < N:
 		if maze_input[p_d[0]][p_d[1]] == "G":
 			solve.append(count + 1)
 			print que
-			return
+			#return
 		if maze_input[p_d[0]][p_d[1]] != "#" and not find_que(que,p_d):
 			find_next(count+1,que,p_d,maze_input)
 	if p_l[1] >= 0:
 		if maze_input[p_l[0]][p_l[1]] == "G":
 			solve.append(count + 1)
 			print que
-			return
+			#return
 		if maze_input[p_l[0]][p_l[1]] != "#" and not find_que(que,p_l):
 			find_next(count+1,que,p_l,maze_input)
 	if p_r[1] < M:
 		if maze_input[p_r[0]][p_r[1]] == "G":
 			solve.append(count + 1)
 			print que
-			return
+			#return
 		if maze_input[p_r[0]][p_r[1]] != "#" and not find_que(que,p_r):
 			find_next(count+1,que,p_r,maze_input)
 	return
