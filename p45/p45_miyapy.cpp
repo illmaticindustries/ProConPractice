@@ -6,7 +6,7 @@
 int main(void){
     int  n;
     char S[BUF];
-    char T[BUF];
+    char T[BUF]="";
     
     //input
     printf("input n\r\n");
@@ -15,7 +15,8 @@ int main(void){
     scanf("%s",S);
 
     //out put
-    printf("%s\r\n",S);
+    
+    printf("%d,%s\r\n",n,S);
     
     //start computation
     int start=0;
@@ -35,7 +36,8 @@ int main(void){
             int j=0;
                        
             while(S[start+j]==S[start+n-i-1-j]){
-                j++;     
+                j++; 
+                if(j>n-start-1)break;    
             }
             //printf("%di.%d,%d",j,start+j,start+n-i-j-1);
             if(S[start+j]<S[start+n-i-1-j]){ 
