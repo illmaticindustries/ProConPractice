@@ -11,6 +11,8 @@ def read_file(file_name)
   start_times = array[1..@num.to_i]
   # 'end_times'
   end_times = array[(@num.to_i + 1)..-1]
+
+  # 二元配置にする
   times = []
   (0..(@num.to_i - 1)).each do |num|
     times[num] = [start_times[num], end_times[num]]
@@ -29,22 +31,18 @@ def read_file(file_name)
   end
 end
 
-# read_file('p43_1.in')
-# read_file('p43_2.in')
-
 def jobs(file)
   read_file(file)
   jobs = []
 
   # 終了時間が早い順にソートする
-  end_times = @end_times.sort
+  # end_times = @end_times.sort
 
   # スタートの位置を終了が一番速い箇所に設定する
   first_end_time_index = @end_times.find_index(@end_times.min)
   start_times = @start_times[first_end_time_index..-1]
   end_times = @end_times.last(start_times.size)
-  # 'first jobs'
-  jobs << @num - start_times.size + 1
+  count = 1
 
   loop do
     # スタートの配列を終了時間に合わせる
@@ -56,15 +54,14 @@ def jobs(file)
     end_times_index = end_times.find_index(end_times.min)
     # 'start_times'
     start_times = start_times[end_times_index..-1]
-    # 'jobs'
-    jobs << @num - start_times.size + 1
     # 'end_times'
     end_times = end_times.last(start_times.size)
     # '---'
+    count += 1
     break if end_times.empty? || start_times.select { |time| time > end_times.first }.empty?
   end
 
-  p "Answer: #{jobs.size}"
+  p "Answer: #{count}"
 end
 
 jobs('p43.in')
