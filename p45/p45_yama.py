@@ -2,37 +2,100 @@
 # -*- coding: utf-8 -*-
 import sys
 
+def head(Scp,Tcp):
+	if(len(Scp)==0):
+		Alist.append(Tcp)
+		return
+
+	#head=foot
+	if(Scp[0]==Scp[len(Scp)-1]):
+		if(len(Tcp)==0):
+			Tcp.append(Scp[0])
+			Scp.pop(0)
+		elif(Scp[0]<=Tcp[0]):
+			Tcp.insert(0,Scp[0])
+			Scp.pop(0)
+		else:
+			Tcp.append(Scp[0])
+			Scp.pop(0)
+
+	elif(Scp[0]<Scp[len(Scp)-1]):
+		if(len(Tcp)==0):
+			Tcp.append(Scp[0])
+			Scp.pop(0)
+		elif(Scp[0]<=Tcp[0]):
+			Tcp.insert(0,Scp[0])
+			Scp.pop(0)
+		else:
+			Tcp.append(Scp[0])
+			Scp.pop(0)
+	else:
+		if(len(Tcp)==0):
+			Tcp.append(Scp[len(Scp)-1])
+			Scp.pop(len(Scp)-1)
+		elif(Scp[len(Scp)-1]<Tcp[0]):
+			Tcp.insert(0,Scp[len(Scp)-1])
+			Scp.pop(len(Scp)-1)
+		else:
+			Tcp.append(Scp[len(Scp)-1])
+			Scp.pop(len(Scp)-1)
+
+	head(Scp,Tcp)
+	foot(Scp,Tcp)
+def foot(Scp,Tcp):
+	if(len(Scp)==0):
+		Alist.append(Tcp)
+		return
+
+	#head=foot
+	if(Scp[0]==Scp[len(Scp)-1]):
+		if(len(Tcp)==0):
+			Tcp.append(Scp[0])
+			Scp.pop(0)
+		elif(Scp[len(Scp)-1]<=Tcp[0]):
+			Tcp.insert(0,Scp[len(Scp)-1])
+			Scp.pop(len(Scp)-1)
+		else:
+			Tcp.append(Scp[len(Scp)-1])
+			Scp.pop(len(Scp)-1)
+
+	elif(Scp[0]<Scp[len(Scp)-1]):
+		if(len(Tcp)==0):
+			Tcp.append(Scp[0])
+			Scp.pop(0)
+		elif(Scp[0]<=Tcp[0]):
+			Tcp.insert(0,Scp[0])
+			Scp.pop(0)
+		else:
+			Tcp.append(Scp[0])
+			Scp.pop(0)
+	else:
+		if(len(Tcp)==0):
+			Tcp.append(Scp[len(Scp)-1])
+			Scp.pop(len(Scp)-1)
+		elif(Scp[len(Scp)-1]<Tcp[0]):
+			Tcp.insert(0,Scp[len(Scp)-1])
+			Scp.pop(len(Scp)-1)
+		else:
+			Tcp.append(Scp[len(Scp)-1])
+			Scp.pop(len(Scp)-1)
+
+	head(Scp,Tcp)
+	foot(Scp,Tcp)
 
 
 if __name__ == '__main__':
-	
+
 	#input	
-	S = []
-	T = []
+	Scp = []
+	Tcp = []
+	Alist = []
 	N = int(raw_input())	
 	str = raw_input()
-	S=list(str)
+	Scp=list(str)
 	
-	if(S[0] < S[len(S)-1]):
-		T.append(S.pop(0))
-	else:
-		T.append(S.pop(len(S)-1))
-	
-	
-	for j in range(N-1):
-		if(S[0] < S[len(S)-1]):
-			if(S[0]<=T[0]):
-				T.insert(0,S[0])
-				S.pop(0)
-			else:
-				T.append(S[0])
-				S.pop(0)
-		else:
-			if(S[len(S)-1]<=T[0]):
-				T.insert(0,S[len(S)-1])
-				S.pop(len(S)-1)
-			else:
-				T.append(S[len(S)-1])
-				S.pop(len(S)-1)
-		print T
-	print T
+	head(Scp,Tcp)
+	foot(Scp,Tcp)
+
+	Alist.sort()	
+	print Alist[0]
