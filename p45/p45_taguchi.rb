@@ -30,7 +30,7 @@ def jobs(file)
     break if s.empty?
   end
 
-  p "t: #{t}"
+  p t
 end
 
 jobs('p45.in')
