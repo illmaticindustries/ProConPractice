@@ -9,37 +9,15 @@ def head(Scp,Tcp):
 
 	#head=foot
 	if(Scp[0]==Scp[len(Scp)-1]):
-		if(len(Tcp)==0):
-			Tcp.append(Scp[0])
-			Scp.pop(0)
-		elif(Scp[0]<=Tcp[0]):
-			Tcp.insert(0,Scp[0])
-			Scp.pop(0)
-		else:
-			Tcp.append(Scp[0])
-			Scp.pop(0)
+		Tcp.append(Scp[0])
+		Scp.pop(0)
 
 	elif(Scp[0]<Scp[len(Scp)-1]):
-		if(len(Tcp)==0):
-			Tcp.append(Scp[0])
-			Scp.pop(0)
-		elif(Scp[0]<=Tcp[0]):
-			Tcp.insert(0,Scp[0])
-			Scp.pop(0)
-		else:
-			Tcp.append(Scp[0])
-			Scp.pop(0)
+		Tcp.append(Scp[0])
+		Scp.pop(0)
 	else:
-		if(len(Tcp)==0):
-			Tcp.append(Scp[len(Scp)-1])
-			Scp.pop(len(Scp)-1)
-		elif(Scp[len(Scp)-1]<Tcp[0]):
-			Tcp.insert(0,Scp[len(Scp)-1])
-			Scp.pop(len(Scp)-1)
-		else:
-			Tcp.append(Scp[len(Scp)-1])
-			Scp.pop(len(Scp)-1)
-
+		Tcp.append(Scp[len(Scp)-1])
+		Scp.pop(len(Scp)-1)
 	head(Scp,Tcp)
 	foot(Scp,Tcp)
 def foot(Scp,Tcp):
@@ -49,38 +27,15 @@ def foot(Scp,Tcp):
 
 	#head=foot
 	if(Scp[0]==Scp[len(Scp)-1]):
-		if(len(Tcp)==0):
-			Tcp.append(Scp[0])
-			Scp.pop(0)
-		elif(Scp[len(Scp)-1]<=Tcp[0]):
-			Tcp.insert(0,Scp[len(Scp)-1])
-			Scp.pop(len(Scp)-1)
-		else:
-			Tcp.append(Scp[len(Scp)-1])
-			Scp.pop(len(Scp)-1)
-
+		Tcp.append(Scp[0])
+		Scp.pop(0)
 	elif(Scp[0]<Scp[len(Scp)-1]):
-		if(len(Tcp)==0):
-			Tcp.append(Scp[0])
-			Scp.pop(0)
-		elif(Scp[0]<=Tcp[0]):
-			Tcp.insert(0,Scp[0])
-			Scp.pop(0)
-		else:
-			Tcp.append(Scp[0])
-			Scp.pop(0)
+		Tcp.append(Scp[0])
+		Scp.pop(0)
 	else:
-		if(len(Tcp)==0):
-			Tcp.append(Scp[len(Scp)-1])
-			Scp.pop(len(Scp)-1)
-		elif(Scp[len(Scp)-1]<Tcp[0]):
-			Tcp.insert(0,Scp[len(Scp)-1])
-			Scp.pop(len(Scp)-1)
-		else:
-			Tcp.append(Scp[len(Scp)-1])
-			Scp.pop(len(Scp)-1)
-
-	head(Scp,Tcp)
+		Tcp.append(Scp[len(Scp)-1])
+		Scp.pop(len(Scp)-1)
+		head(Scp,Tcp)
 	foot(Scp,Tcp)
 
 
