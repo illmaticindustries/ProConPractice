@@ -14,22 +14,42 @@ int main(void){
     printf("input s\r\n");
     scanf("%s",S);
 
+    //out put
     printf("%s\r\n",S);
     
+    //start computation
     int start=0;
     int i=0;
     
+
     for(i=0;i<n;i++){
         if(S[start]<S[start+n-i-1]){
             T[i]=S[start];
             start++;
-            printf("%c\r\n",T[i]);
-        }else{
+            //printf("%c\r\n",T[i]);
+        }else if(S[start]>S[start+n-i-1]){
             T[i]=S[start+n-i-1];
-            printf("%c\r\n",T[i]);
+            //printf("%c\r\n",T[i]);
+        }else{
+            //printf("equal");
+            int j=0;
+                       
+            while(S[start+j]==S[start+n-i-1-j]){
+                j++;     
+            }
+            //printf("%di.%d,%d",j,start+j,start+n-i-j-1);
+            if(S[start+j]<S[start+n-i-1-j]){ 
+                T[i]=S[start];
+                start++;
+                //printf("%c\r\n",T[i]);
+       
+            }else{
+                T[i]=S[start+n-i-1];
+                //printf("%c\r\n",T[i]);
+            }
         }
     }
-    printf("answ:%s",T);
+    printf("answ:%s\r\n",T);
 
 }
 
