@@ -14,7 +14,7 @@ def jobs(file)
   s = @s
   reverse_s = @s.reverse
   t = ''
-  # p "s: #{s}"
+  p "s: #{s}"
 
   loop do
     if s < reverse_s
@@ -24,9 +24,9 @@ def jobs(file)
       t << reverse_s.slice!(0)
       s.chop!
     end
-    # p "t: #{t}"
-    # p '---'
-    # p "s: #{s}"
+    p "t: #{t}"
+    p '---'
+    p "s: #{s}"
     break if s.empty?
   end
 
@@ -36,3 +36,4 @@ end
 jobs('p45.in')
 jobs('p45_1.in')
 jobs('p45_2.in')
+jobs('p45_3.in')
