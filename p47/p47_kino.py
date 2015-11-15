@@ -11,10 +11,13 @@ def read_input(file_name):
     return N,R,X
 
 def calc(N,R,X):
-    L = X[-1] - X[0]
-    M = L / R -1
-    if M > N:
+    L = X[-1]-X[0]
+    O = R*(N-1)
+    M = (L/R)-1
+    if L > O:
         return N
+    elif M > N:
+        return N -1
     else:
         return M
     
@@ -24,4 +27,5 @@ def test(file_name):
     print calc(N,R,X)
 
 test('p47.in')
+test('p47_1.in')
 test('p47_2.in')
