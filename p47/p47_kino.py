@@ -24,3 +24,4 @@ def test(file_name):
     print calc(N,R,X)
 
 test('p47.in')
+test('p47_2.in')
