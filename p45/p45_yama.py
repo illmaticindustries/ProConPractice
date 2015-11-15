@@ -2,55 +2,35 @@
 # -*- coding: utf-8 -*-
 import sys
 
-def head(Scp,Tcp):
-	if(len(Scp)==0):
-		Alist.append(Tcp)
-		return
+def solve(S,T):
+	if(S==[]):
+		return T
 
-	#head=foot
-	if(Scp[0]==Scp[len(Scp)-1]):
-		Tcp.append(Scp[0])
-		Scp.pop(0)
-
-	elif(Scp[0]<Scp[len(Scp)-1]):
-		Tcp.append(Scp[0])
-		Scp.pop(0)
+	if(S[0]==S[len(S)-1]):
+		Srv = S[:]
+		Srv.reverse()
+		if(S<=Srv):
+			T.append(S[0])
+			S.pop(0)
+		else:
+			T.append(S[len(S)-1])
+			S.pop(len(S)-1)
+	elif(S[0]<S[len(S)-1]):
+		T.append(S[0])
+		S.pop(0)
 	else:
-		Tcp.append(Scp[len(Scp)-1])
-		Scp.pop(len(Scp)-1)
-	head(Scp,Tcp)
-	foot(Scp,Tcp)
-def foot(Scp,Tcp):
-	if(len(Scp)==0):
-		Alist.append(Tcp)
-		return
+		T.append(S[len(S)-1])
+		S.pop(len(S)-1)
 
-	#head=foot
-	if(Scp[0]==Scp[len(Scp)-1]):
-		Tcp.append(Scp[0])
-		Scp.pop(0)
-	elif(Scp[0]<Scp[len(Scp)-1]):
-		Tcp.append(Scp[0])
-		Scp.pop(0)
-	else:
-		Tcp.append(Scp[len(Scp)-1])
-		Scp.pop(len(Scp)-1)
-		head(Scp,Tcp)
-	foot(Scp,Tcp)
-
+	return solve(S,T)
 
 if __name__ == '__main__':
-
 	#input	
-	Scp = []
-	Tcp = []
-	Alist = []
+	Sin = []
+	Tin = []
 	N = int(raw_input())	
 	str = raw_input()
-	Scp=list(str)
-	
-	head(Scp,Tcp)
-	foot(Scp,Tcp)
+	Sin=list(str)
 
-	Alist.sort()	
-	print Alist[0]
+	print solve(Sin,Tin)
+
