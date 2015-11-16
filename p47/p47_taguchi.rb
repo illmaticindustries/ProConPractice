@@ -5,7 +5,9 @@ def read_file(file_name)
       array << line.chomp
     end
   end
+  p 'R='
   p @r = array[1].to_i
+  p 'X='
   p @x = array[2..-1].map(&:to_i)
 end
 
@@ -16,16 +18,19 @@ def count(file)
   count = 0
 
   loop do
-    r_point = x_array.first + @r
-    break if x_array.select! { |x| x > r_point }.empty?
+    p '------'
     # 最初の印を見つける
-    # p x_array.select! { |x| x > r_point }
+    p 'r_point'
+    p r_point = x_array.first + @r
+    p 'x_array'
+    p x_array = x_array.select { |x| x >= r_point }
     count += 1
+    break if x_array.empty?
   end
   p count
 end
 
-count('p47.in')
+# count('p47.in')
 count('p47_1.in')
-count('p47_2.in')
-count('p47_3.in')
+# count('p47_2.in')
+# count('p47_3.in')
