@@ -29,4 +29,4 @@ def test(file_name):
     print solve(N,L)
 
 test('p49.in')
-
+test('p49_1.in')
