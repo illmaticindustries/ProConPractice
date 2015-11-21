@@ -1,4 +1,17 @@
 # -*- coding:utf-8 -*-
+"""
+    L_1 =< L_2 =< ... =< L_N
+    cost = sum_1 + sum_2 + ... + sum_N-1
+
+    sum_1 = L_1 + L_2 + ... + L_N
+    sum_2 = L_1 + L_2 + ... + L_N-1
+    .
+    .
+    .
+    sum_N-1 = L_1 + L_2
+
+"""
+
 
 def read_input(file_name):
     f = open(file_name,'r')
@@ -30,3 +43,4 @@ def test(file_name):
 
 test('p49.in')
 test('p49_1.in')
+test('p49_2.in')
