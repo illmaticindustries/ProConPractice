@@ -54,3 +54,4 @@ def test(file_name):
 
 #solve 
 test('p52.in')
+test('p52_1.in')
