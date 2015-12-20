@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+#input data
 def read_input(file_name):
     f = open(file_name,'r')
     n = int(f.readline())
@@ -16,10 +17,7 @@ def read_input(file_name):
         
     return n,W,L
 
-def solve(n,W,L):
-    
-    return sum
-
+#saiki
 def func(num,id,sum,sum_v,n,W,L,max):
     print num,id,max
     if num==n-1:
@@ -47,11 +45,12 @@ def func(num,id,sum,sum_v,n,W,L,max):
             return func(num,id+1,sum,sum_v,n,W,L,max)
     
 
-
+# main_test function
 def test(file_name):
     n,W,L = read_input(file_name)
     print n,W,L
     print L[3][1]
     print func(0,1,L[0][0],L[0][1],n,W,L,0)
 
+#solve 
 test('p52.in')
