@@ -28,10 +28,8 @@ def value(n, max_weight_now)
     value = 0
   else
     # p "#{n}番目"
-    # p "重さ:"
-    # p n_weight = @array[n][0]
-    # p '価値:'
-    # p n_value = @array[n][1]
+    n_weight = @array[n][0]
+    n_value = @array[n][1]
 
     # 現在の要素の重さが重さの許容量を超える場合は、自分自身は入れないで次の要素に行く
     if n_weight > max_weight_now
@@ -60,7 +58,7 @@ def execute(file_name)
   p '合計値: ' + value(0, @max_weight).to_s
 end
 
-# execute('p52.in')
-execute('p52_1.in')
+execute('p52.in')
+# execute('p52_1.in')
 # execute('p52_2.in')
 # execute('p52_3.in')
