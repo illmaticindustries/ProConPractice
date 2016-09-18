@@ -24,7 +24,14 @@ def expedition(N,L,p,A,B):
 
 def test(file_name):     
     N,L,p,A,B = read_input(file_name)
-    print expedition(N,L,p,A,B)    
+    return expedition(N,L,p,A,B)    
     
+def test_check(file_name, act_ans):
+    my_ans = test(file_name)
+    print file_name
+    if my_ans == act_ans:
+        print 'OK'
+    else:
+        print 'NG'
 
-test('p73.in')
+test_check('p73.in',2)
