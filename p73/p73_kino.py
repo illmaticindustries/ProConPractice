@@ -14,12 +14,23 @@ def expedition(N,L,p,A,B):
     #init expected length l
     l = p
     count = 0
+    use = [p]
+    can_use = []
     for i in range(N):
-        if l >= int(A[i]):
-            l += int(B[i])
-            count += 1    
+        if l + sum(can_use) >= int(A[i]):
+            can_use.append(int(B[i]))
+            while l - int(A[i]) <= 0:
+                use.append(max(can_use))
+                can_use.remove(max(can_use))
+                l = sum(use)
         if l >= L:
+            count = len(use) - 1
             return count
+    while l - L <= 0:
+        use.append(max(can_use))
+        can_use.remove(max(can_use))
+        count = len(use) - 1
+        return count
     return -1
 
 def test(file_name):     
@@ -32,6 +43,9 @@ def test_check(file_name, act_ans):
     if my_ans == act_ans:
         print 'OK'
     else:
-        print 'NG'
+        print my_ans, 'is NG'
 
 test_check('p73.in',2)
+test_check('p73_2.in',2)
+test_check('p73_3.in',3)
+
