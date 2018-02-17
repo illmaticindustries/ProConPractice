@@ -1,6 +1,6 @@
 def read_file(file_name)
   @coins_array = []
-  File.open("p42/#{file_name}") do |file|
+  File.open(file_name) do |file|
     file.each_line do |line|
       @coins_array << line.chomp.to_i
     end
