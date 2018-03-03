@@ -1,70 +1,22 @@
-def read_file(file_name)
-  array = []
-  File.open("p43/#{file_name}") do |file|
-    file.each_line do |line|
-      array << line.chomp.to_i
-    end
-  end
-
-  @num = array.first
-  # 'start_times'
-  start_times = array[1..@num.to_i]
-  # 'end_times'
-  end_times = array[(@num.to_i + 1)..-1]
-
-  # 二元配置にする
-  times = []
-  (0..(@num.to_i - 1)).each do |num|
-    times[num] = [start_times[num], end_times[num]]
-  end
-
-  # end_timesでソートする
-  times = times.sort { |a, b| a[1] <=> b[1] }
-
-  # 戻す
-  @start_times = []
-  @end_times = []
-
-  times.each do |time|
-    @start_times << time[0]
-    @end_times  << time[1]
+n, s, t = 0, [], []
+File.open(ARGV[0]) { |file| file.each_with_index do |line, i| 
+  n = line.chomp.to_i if i == 0
+  s << line.chomp.to_i if 0 < i && i <= n 
+  t << line.chomp.to_i if n < i
+end }
+itv = []
+for i in 0..(n - 1) do
+  a = []
+  a << t[i]
+  a << s[i]
+  itv << a
+end
+itv.sort!
+ans, t = 0, 0
+for i in 0..(n - 1) do
+  if t < itv[i][1]
+    ans += 1
+    t = itv[i][0]
   end
 end
-
-def jobs(file)
-  read_file(file)
-  jobs = []
-
-  # 終了時間が早い順にソートする
-  # end_times = @end_times.sort
-
-  # スタートの位置を終了が一番速い箇所に設定する
-  first_end_time_index = @end_times.find_index(@end_times.min)
-  start_times = @start_times[first_end_time_index..-1]
-  end_times = @end_times.last(start_times.size)
-  count = 1
-
-  loop do
-    # スタートの配列を終了時間に合わせる
-    start_times = start_times.select { |time| time > end_times.first }
-    end_times = end_times.last(start_times.size)
-
-    # スタートの位置を終了が一番速い箇所に設定する
-    # 'end_times_index'
-    end_times_index = end_times.find_index(end_times.min)
-    # 'start_times'
-    start_times = start_times[end_times_index..-1]
-    # 'end_times'
-    end_times = end_times.last(start_times.size)
-    # '---'
-    count += 1
-    break if end_times.empty? || start_times.select { |time| time > end_times.first }.empty?
-  end
-
-  p "Answer: #{count}"
-end
-
-jobs('p43.in')
-jobs('p43_1.in')
-jobs('p43_2.in')
-jobs('p43_3.in')
+p ans
