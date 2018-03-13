@@ -1,36 +1,16 @@
-def read_file(file_name)
-  array = []
-  File.open("p47/#{file_name}") do |file|
-    file.each_line do |line|
-      array << line.chomp
-    end
-  end
-  p 'R='
-  p @r = array[1].to_i
-  p 'X='
-  p @x = array[2..-1].map(&:to_i)
+n, r, x = 0, 0, []
+File.open(ARGV[0]) { |file| file.each_with_index do |line, i|
+  n = line.chomp.to_i if i == 0
+  r = line.chomp.to_i if i == 1
+  x << line.chomp.to_i if 1 < i 
+end }
+
+i, ans = 0, 0
+while i < n do
+  start = x[i]
+  while i < n && x[i] <= start + r do i += 1 end
+  point = x[i - 1]
+  while i < n && x[i] <= point + r do i += 1 end
+  ans += 1
 end
-
-def count(file)
-  read_file(file)
-  x_array = @x
-  r = @r
-  count = 0
-
-  loop do
-    p '------'
-    # 最初の印を見つける
-    p 'r_point'
-    p r_point = x_array.first + @r
-    p 'x_array'
-    p x_array = x_array.select { |x| x >= r_point }
-    count += 1
-    break if x_array.empty?
-  end
-  p count
-end
-
-# count('p47.in')
-count('p47_1.in')
-# count('p47_2.in')
-# count('p47_3.in')
+p ans

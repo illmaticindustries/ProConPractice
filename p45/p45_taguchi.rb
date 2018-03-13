@@ -11,4 +11,3 @@ while !s.empty? do
   end
 end
 p t
-
